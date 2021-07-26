@@ -59,19 +59,18 @@ $ python meme.py [--body] [--author] [--path]
 - path an image path
 
 However, the three arguments above are optional. By default, the program will automatically extract quotes and images from files under the project folder. Each time after execution, you can find the final meme under the `tmp` folder.
-
+<img src='img_for_README/cli_example.png'>
+<br></br>
 
 ### 3. Run the Program through Web
 The other way to generate the memes is via a web interface. First, type in the following command in the terminal to start up the web service:
 ```
 $ python app.py
 ```
-<img src='img_for_README/cli_example.png'>
-<br></br>
+<img src='img_for_README/web_example.png' width=280>
 
 Likewise, the generated meme will be stored under a folder called `static`.
-<img src='img_for_README/web_example.png' width=280>
-<br></br>
+
 
 ## Acknowledgement
 The material for this project is provided by <a href="https://www.udacity.com/">Udacity</a>, a ___distinguished, world-class___ online teaching organization for computer engineering and data science. This portfolio is inspired by Capstone Project of <a href="https://www.udacity.com/course/intermediate-python-nanodegree--nd303">Intermediate Python Nanodegree Program</a>.
