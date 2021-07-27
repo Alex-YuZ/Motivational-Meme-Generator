@@ -11,7 +11,7 @@ from .TextIngestor import TextIngestor
 class Ingestor(IngestorInterface):
     """General class to parse files with all formats"""
     ingestors = [DocxIngestor, CSVIngestor, PDFIngestor, TextIngestor]
-    
+
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         """Combine different ingestors to parse different files

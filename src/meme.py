@@ -8,7 +8,7 @@ import argparse
 
 
 def generate_meme(path=None, body=None, author=None):
-    """Generate a meme on a given image and quote 
+    """Generate a meme on a given image and quote
 
     Args:
         path (str, optional): path to quotes files. Defaults to None.
@@ -48,20 +48,22 @@ def generate_meme(path=None, body=None, author=None):
         if author is None:
             raise Exception('Author Required if Body is Used')
         quote = QuoteModel(body, author)
-        
+
     # check whether the output directory exists or not
     # if not, create one
     if not os.path.isdir('./tmp'):
-        print("output folder {} has been created in the working directory!".format("tmp"))
+        output_str = ("output folder {} has been created"
+                      "in the working directory!")
+        print(output_str.format("tmp"))
         os.mkdir('./tmp')
-    
+
     # do nothing if exists
     else:
         pass
-    
+
     meme = MemeEngine('./tmp')
     path = meme.make_meme(img, quote.body, quote.author)
-    
+
     return path
 
 
@@ -69,10 +71,18 @@ if __name__ == "__main__":
 
     # parse CLI arguments
     parser = argparse.ArgumentParser(description='Meme Creation')
-    parser.add_argument('--path', type=str, help='path to images to create from')
-    parser.add_argument('--body', type=str, help='body text to overlay on the meme')
-    parser.add_argument('--author', type=str, help='author text to overlay on the meme')
+    parser.add_argument('--path',
+                        type=str,
+                        help='path to images to create from')
+
+    parser.add_argument('--body',
+                        type=str,
+                        help='body text to overlay on the meme')
+
+    parser.add_argument('--author',
+                        type=str,
+                        help='author text to overlay on the meme')
     args = parser.parse_args()
-    
+
     # print out the location where the generated meme stores
     print(generate_meme(args.path, args.body, args.author))

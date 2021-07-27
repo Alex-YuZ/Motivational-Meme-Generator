@@ -11,7 +11,9 @@ app = Flask(__name__)
 
 # create a directory to store the generated meme images
 if not os.path.isdir('./static'):
-    print("output folder {} has been created in the working directory!".format("static"))
+    output_str = ("output folder {} has been created"
+                  "in the working directory!")
+    print(output_str.format("static"))
     os.mkdir('./static')
 else:
     pass
@@ -53,10 +55,10 @@ def meme_rand():
 
     # select a random image from imgs array
     img = random.choice(imgs)
-    
+
     # select a random quote from the quotes array
     quote = random.choice(quotes)
-    
+
     # make the meme and return its output directory
     path = meme.make_meme(img, quote.body, quote.author)
     return render_template('meme.html', path=path)
@@ -82,11 +84,11 @@ def meme_post():
     tmp = "./static/{}.png".format(random.randint(0, 10000))
     with open(tmp, 'wb') as infile:
         infile.write(response.content)
-        
+
     # Use the meme object to generate a meme using this temp
     # file and the body and author form paramaters.
     path = meme.make_meme(tmp, body, author)
-    
+
     # Remove the temporary saved image.
     os.remove(tmp)
 
